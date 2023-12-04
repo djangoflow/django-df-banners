@@ -7,7 +7,6 @@ from django.db.models.query import QuerySet
 from django.http import HttpRequest
 
 from df_banners.models import Banner
-from df_banners.video.tasks import process_video
 
 
 @admin.register(Banner)
@@ -29,6 +28,7 @@ class BannerAdmin(admin.ModelAdmin):
         return ", ".join([t.name for t in obj.tags.all()])
 
     def process_video(self, request: HttpRequest, qs: QuerySet[Banner]) -> None:
+        from df_banners.video.tasks import process_video
         for banner in qs:
             process_video.delay(str(banner.video.pk))
 
