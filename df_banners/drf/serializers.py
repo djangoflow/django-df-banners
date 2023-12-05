@@ -48,6 +48,7 @@ class BannerSerializer(serializers.ModelSerializer):
             "description",
             "full_image",
             "action_url",
+            "action_text",
             "sequence",
             "video",
         ]

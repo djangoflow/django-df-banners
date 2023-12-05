@@ -18,6 +18,7 @@ class Banner(TitledCard, models.Model):
 
     full_image = models.ImageField(upload_to="banners", blank=True, null=True)
     action_url = models.CharField(blank=True, default="", max_length=255)
+    action_text = models.CharField(blank=True, default="", max_length=255)
     tags = TaggableManager(blank=True)
 
     class Meta:
